@@ -9,13 +9,15 @@ import App from './App.vue'
 
 // Create an http link:
 const httpLink = new HttpLink({
-  uri: "http://localhost:3000/graphql"
+  // uri: "http://localhost:3000/graphql"
+  uri: 'https://api.dev.archive.avicii.com/graphql'
 })
 
 // Socket API link:
 const wsLink = new GraphQLWsLink(
   createClient({
     url: 'wss://api.dev.archive.avicii.com/graphql',
+    // url: 'ws://localhost:3000/graphql',
     options: {
       reconnect: true,
     },
@@ -23,7 +25,7 @@ const wsLink = new GraphQLWsLink(
       "Sec-Websocket-Protocol": "graphql-ws"
     },
     connectionParams: {
-      accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzLCJpYXQiOjE2OTA1MzUyMTAsImV4cCI6MTY5MDUzNTMzMH0.eq43gUsWfZ3aA0pbhKrosXF5D2RyvuzQdvbFw43Sv7g"
+      accessToken: "xxxxx"
     },
     on: {
       opened() {console.log('opened')},
@@ -31,7 +33,7 @@ const wsLink = new GraphQLWsLink(
       connected() {console.log('connected')},
       ping() {console.log('ping')},
       pong() {console.log('pong')},
-      message(m) {console.log(m)},
+      message(m) {console.log("message", m)},
       error(e) {console.log(e)},
     }
   })

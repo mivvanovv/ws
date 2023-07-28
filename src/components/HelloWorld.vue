@@ -40,8 +40,9 @@ export default {
     msg: String
   },
   setup() {
-    const { onResult } = useSubscription(SUB)
-    onResult((data) => console.log(data))
+    const { onResult, onError } = useSubscription(SUB)
+    onResult((data) => console.log("subscribed to batchUpdate", data))
+    onError((data) => console.log("subscribed to batchUpdate failed", data))
   }
 }
 </script>
