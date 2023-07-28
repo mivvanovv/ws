@@ -31,10 +31,17 @@
 </template>
 
 <script>
+import { useSubscription } from '@vue/apollo-composable'
+import SUB from '@/sub.gql'
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  setup() {
+    const { onResult } = useSubscription(SUB)
+    onResult((data) => console.log(data))
   }
 }
 </script>

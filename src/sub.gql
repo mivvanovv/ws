@@ -1,0 +1,14 @@
+subscription OnBatchUpdated {
+  batchUpdated(batchId: 18) {
+    id
+    comment
+    uploadState
+    assetStats {
+      waiting
+      uploading
+      processing
+      failed
+      ready
+    }
+  }
+}
